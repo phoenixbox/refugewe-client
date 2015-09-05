@@ -1,0 +1,1 @@
+console.error("Error: Cannot find module '/Users/shanerogers/projects/refugewe/refugewe-client/test/**/*.js' from '/Users/shanerogers/projects/refugewe/refugewe-client'");

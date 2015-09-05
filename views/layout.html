@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>RefugeWe - Helping Humans</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% if process.env.NODE_ENV === 'production' %}
+      <link rel="stylesheet" href="/css/main.min.css">
+    {% else %}
+      <link rel="stylesheet" href="/css/main.css">
+    {% endif %}
+  </head>
+  <body>
+
+    <div class="container refugeWe__container">
+      {% block content %}{% endblock %}
+    </div>
+
+    {% if authed && access_token && uuid %}
+      <script>
+        var __access_token = '{{access_token}}'
+        var __uuid = '{{uuid}}'
+      </script>
+
+      {% if process.env.NODE_ENV === 'production' %}
+        <script src="/js/refugeWe.min.js"></script>
+      {% else %}
+        <script src="/js/refugeWe.js"></script>
+      {% endif %}
+    {% endif %}
+  </body>
+</html>

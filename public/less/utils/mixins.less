@@ -1,0 +1,17 @@
+.backgroundImage(@src, @size: cover) {
+  background-image: url(@src);
+  background-repeat: no-repeat;
+  background-size: @size;
+}
+.drop-shadow(@x: 0, @y: 1px, @blur: 2px, @spread: 0, @alpha: 0.25) {
+	-webkit-box-shadow:	@x @y @blur @spread rgba(0, 0, 0, @alpha);
+	-moz-box-shadow:	@x @y @blur @spread rgba(0, 0, 0, @alpha);
+	box-shadow:		@x @y @blur @spread rgba(0, 0, 0, @alpha);
+}
+.italicize() {
+  font-style: italic;
+}
+.refugeWeButton(@border: transparent, @background: transparent) {
+  border: 1px solid @border;
+  background-color: @background;
+}
