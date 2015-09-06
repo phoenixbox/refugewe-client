@@ -11,12 +11,12 @@ server dev-server:
 	@npm start
 
 watch dev-watch:
+	@npm run build &
 	@node_modules/.bin/gulp
 
 build:
 	@npm run build &
-	@npm run build-less &
-	@npm run build-test &
+	@npm run build-less
 
 build-production:
 	@npm run build-production
