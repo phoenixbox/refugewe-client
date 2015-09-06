@@ -36,7 +36,8 @@ var plugins = [
     }
   },
   require('./lib/oauth'),
-  require('./lib/api/user')
+  require('./lib/facebook'),
+  require('./lib/api/user'),
 ]
 
 server.register(plugins
@@ -72,6 +73,7 @@ server.register(plugins
       },
       handler: function (request, reply) {
         var viewVars = internals.viewVars(true, request);
+        console.log('VIEW VARS: ', viewVars);
 
         reply.view('refugewe.html', viewVars);
       }
