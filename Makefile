@@ -28,6 +28,9 @@ react-select:
 	mkdir -p public/less/react-select
 	cp -r node_modules/react-select/less/* public/less/react-select
 
+watch unit-test:
+	@npm run watch-unit-test
+
 test:
 	@npm test
 

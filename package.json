@@ -28,6 +28,7 @@
     "swig": "^1.4.2"
   },
   "devDependencies": {
+    "async": "^1.4.2",
     "aws-sdk": "^2.1.42",
     "babel": "^5.6.23",
     "babelify": "^5.0.5",
@@ -43,7 +44,7 @@
     "del": "^1.2.0",
     "ecstatic": "^0.8.0",
     "envify": "^3.4.0",
-    "exorcist": "^0.3.0",
+    "exorcist": "~0.4.0",
     "github": "^0.2.4",
     "gulp": "^3.8.11",
     "gulp-autoprefixer": "^2.3.0",
@@ -96,6 +97,8 @@
     "build-test": "NODE_ENV=test browserify test/index.js -t rewireify -t babelify -t envify -d | exorcist -b './app' test/test-bundle.js.map > test/test-bundle.js",
     "start": "node server.js",
     "test": "NODE_ENV=test ./node_modules/karma/bin/karma start --browsers Firefox --single-run",
+    "unit-test": "mocha ./test/unit --compilers js:compiler.js --recursive",
+    "watch-unit-test": "mocha ./test/unit --watch --compilers js:compiler.js --recursive",
     "watch-test": "NODE_ENV=test ./node_modules/karma/bin/karma start",
     "watchify": "watchify app -d -v -o 'exorcist -b './app' public/js/refugeWe.js.map > public/js/refugeWe.js'",
     "watchify-test": "NODE_ENV=test watchify test/index.js -o 'exorcist -b './app' test/test-bundle.js.map > test/test-bundle.js' -t rewireify -t babelify -t envify -dv"
