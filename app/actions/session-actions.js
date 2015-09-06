@@ -19,7 +19,7 @@ module.exports = {
   init: function() {
     let access_token = SessionStore.getAccessToken() || __access_token;
 
-    SessionAPI.login(__uuid, access_token).then(function(res) {
+    SessionAPI.login(access_token).then(function(res) {
       if (res.error) {
         var errorMsgs = _getErrors(res);
         AppDispatcher.dispatch({
@@ -27,16 +27,15 @@ module.exports = {
           payload: errorMsgs
         });
       } else {
-        /* Response Keys
-          "access_token":
-          "uuid":
-          "token_type":
-          "user_id":
-          "facebook_username":
-          "facebook_email":
-          "facebook_display_name":
-          "facebook_oauth_token":
-        */
+        /* Session Serialized
+         * :access_token,
+         * :token_type,
+         * :user_id,
+         * :facebook_username,
+         * :facebook_email,
+         * :facebook_display_name,
+         * :facebook_token
+         */
 
         AppDispatcher.dispatch({
           actionType: SessionConstants.LOGIN,

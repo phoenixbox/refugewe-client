@@ -6,8 +6,7 @@ import Profile from './views/pages/profile';
 
 var routes = (
   <Route handler={App}>
-    <Route name="profile" handler={Profile} >
-    </Route>
+    <Route name="profile" handler={Profile} />
     <DefaultRoute handler={Profile} />
   </Route>
 );

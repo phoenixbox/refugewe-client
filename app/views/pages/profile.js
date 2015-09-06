@@ -1,15 +1,12 @@
-// Native
 import React from 'react/addons';
-let ReactPropTypes = React.PropTypes;
 import Router, {Link, Navigation} from 'react-router';
 
 let Profile  = React.createClass({
+  mixins: [Navigation],
 
   propTypes: {
     user: React.PropTypes.object
   },
-
-  mixins: [Navigation],
 
   signOut() {
     SessionActions.logout();
@@ -24,4 +21,4 @@ let Profile  = React.createClass({
   }
 })
 
-module.exports = Profile;
+export default Profile;

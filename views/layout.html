@@ -19,10 +19,9 @@
       {% block content %}{% endblock %}
     </div>
 
-    {% if authed && access_token && uuid %}
+    {% if access_token %}
       <script>
         var __access_token = '{{access_token}}'
-        var __uuid = '{{uuid}}'
       </script>
 
       {% if process.env.NODE_ENV === 'production' %}

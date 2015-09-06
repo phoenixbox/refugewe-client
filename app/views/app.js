@@ -2,7 +2,9 @@ import React from 'react/addons';
 import classnames from 'classnames';
 import _ from 'lodash';
 import SessionStore from '../stores/session-store.js';
+import FacebookStore from '../stores/facebook-store.js'
 import SessionActions from '../actions/session-actions.js';
+import {RouteHandler} from 'react-router';
 
 let internals = {
   getSessionFromStore() {
@@ -14,7 +16,7 @@ let internals = {
 
     return {
       user: user,
-      facebook: SessionStore.getFacebook()
+      facebook: FacebookStore.getFacebook()
     }
   }
 }
@@ -25,15 +27,17 @@ let App = React.createClass({
     return internals.getSessionFromStore();
   },
 
-  componentDidMount: function() {
+  componentDidMount() {
     SessionStore.addChangeListener(this._onChange);
+    FacebookStore.addChangeListener(this._onChange);
   },
 
-  componentWillUnmount: function() {
+  componentWillUnmount() {
     SessionStore.removeChangeListener(this._onChange);
+    FacebookStore.removeChangeListener(this._onChange);
   },
 
-  render: function() {
+  render() {
     let componentProps = _.cloneDeep(this.props);
 
     if (!_.isEmpty(this.state.user)) {
@@ -45,10 +49,7 @@ let App = React.createClass({
     )
   },
 
-  /*
-    Event handler for 'change' events coming from the StoresStore
-  */
-  _onChange: function() {
+  _onChange() {
     console.log('Session store updated')
     this.setState(internals.getSessionFromStore());
   }

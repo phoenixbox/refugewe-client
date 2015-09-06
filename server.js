@@ -56,15 +56,21 @@ server.register(plugins
     {
       method: 'GET',
       path: '/',
+      config: {
+        auth: {
+          strategy: 'session',
+          mode: 'try'
+        }
+      },
       handler: function (request, reply) {
-        var viewVars = internals.viewVars(false, request);
-
-        reply.view('home.html', viewVars);
+        var viewVars = internals.viewVars(request);
+        if (viewVars.access_token) {
+          reply.redirect('/profile')
+        } else {
+          reply.view('home.html', viewVars);
+        }
       }
     },
-    /**
-     * Redirect to profile after oauth login so that React router picks up
-     */
     {
       method: 'GET',
       path: '/profile',
@@ -72,9 +78,8 @@ server.register(plugins
         auth: 'session'
       },
       handler: function (request, reply) {
-        var viewVars = internals.viewVars(true, request);
-        console.log('VIEW VARS: ', viewVars);
-
+        var viewVars = internals.viewVars(request);
+        // this template has the script tag to pick up the app
         reply.view('refugewe.html', viewVars);
       }
     },
@@ -98,16 +103,12 @@ module.exports.server = server;
 
 
 var internals = {
-  viewVars: function(authed, request) {
-    var authAttrs = request.auth.credentials ? internals.pluckAuthAttrs(request.auth.credentials.profile) : {};
-
-    return _.extend({
-      authed: authed
-    }, authAttrs)
+  viewVars: function(request) {
+    return request.auth.credentials ? internals.pluckAuthAttrs(request.auth.credentials.profile) : {};
   },
 
   pluckAuthAttrs: function(profile) {
-    var authAttrs = ['access_token', 'uuid'];
+    var authAttrs = ['access_token'];
 
     return _.reduce(profile, function(memo, val, key) {
       if (_.contains(authAttrs, key)) {

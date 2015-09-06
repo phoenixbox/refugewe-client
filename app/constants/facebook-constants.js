@@ -1,5 +1,6 @@
 import keymirror from 'keymirror';
 
 export default keymirror({
-  INIT: null
+  FB_INIT: null,
+  FB_ERROR: null
 });
