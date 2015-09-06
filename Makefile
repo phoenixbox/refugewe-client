@@ -11,7 +11,6 @@ server dev-server:
 	@npm start
 
 watch dev-watch:
-	@npm run build &
 	@node_modules/.bin/gulp
 
 build:
