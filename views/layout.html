@@ -14,8 +14,23 @@
     {% endif %}
   </head>
   <body>
+    {% if !access_token %}
+      <nav class="navbar party-navbar">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">RefugeWe</a>
+          </div>
+          <div class="collapse navbar-collapse" id="mayk-navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="/about">About</a></li>
+              <li><a href="/syria">Syria</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    {% endif %}
 
-    <div class="container refugeWe__container">
+    <div class="app">
       {% block content %}{% endblock %}
     </div>
 

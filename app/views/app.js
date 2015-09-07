@@ -4,6 +4,7 @@ import _ from 'lodash';
 import SessionStore from '../stores/session-store.js';
 import FacebookStore from '../stores/facebook-store.js'
 import SessionActions from '../actions/session-actions.js';
+import Header from './components/header.js'
 import {RouteHandler} from 'react-router';
 
 let internals = {
@@ -45,7 +46,12 @@ let App = React.createClass({
     }
 
     return (
-      <RouteHandler {...componentProps} />
+      <div className="container">
+        <Header />
+        <div className="row-offcanvas row-offcanvas-left">
+          <RouteHandler {...componentProps} />
+        </div>
+      </div>
     )
   },
 
