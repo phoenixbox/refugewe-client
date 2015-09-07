@@ -12,7 +12,6 @@ module.exports = {
   logout() {
     // Hits hapi server to flush credentials
     return request.get(APIEndpoints.LOGOUT)
-      .query({source: 'client'})
       .set('Accept', 'application/json')
   }
 }

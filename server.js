@@ -46,27 +46,15 @@ server.register(plugins
     throw err;
   }
 
-  function serveApp(request, reply) {
-    reply.view('layout.html', {
-      token: request.auth.credentials.token
-    })
-  }
-
   server.route([
     {
       method: 'GET',
       path: '/',
-      config: {
-        auth: {
-          strategy: 'session',
-          mode: 'try'
-        }
-      },
       handler: function (request, reply) {
-        var viewVars = internals.viewVars(request);
-        if (viewVars.access_token) {
+        if (request.auth.isAuthenticated) {
           reply.redirect('/profile')
         } else {
+          var viewVars = internals.viewVars(request);
           reply.view('home.html', viewVars);
         }
       }
@@ -79,8 +67,16 @@ server.register(plugins
       },
       handler: function (request, reply) {
         var viewVars = internals.viewVars(request);
-        // this template has the script tag to pick up the app
+        // Template has the client JS
         reply.view('refugewe.html', viewVars);
+      }
+    },
+    {
+      method: 'GET',
+      path: '/login',
+      handler: function (request, reply) {
+        var viewVars = internals.viewVars(request);
+        reply.view('login.html', viewVars);
       }
     },
     {

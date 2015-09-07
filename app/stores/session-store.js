@@ -87,11 +87,11 @@ SessionStore.dispatchToken = AppDispatcher.register(function(action) {
       console.log('LOGIN ERROR: ', action.payload);
       break
     case SessionConstants.LOGOUT:
-      // Flush the session related variables
-      __access_token = null;
-      _user = null;
-
+      /*
+       * Flush the session related variables
+       */
       // Hard reset of route to decouple from ReactRouter
+      __access_token = null;
       window.location.href = '/';
       break;
 
