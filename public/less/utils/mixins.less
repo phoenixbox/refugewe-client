@@ -11,7 +11,13 @@
 .italicize() {
   font-style: italic;
 }
-.refugeweButton(@border: transparent, @background: transparent, @size: 1px) {
+.refugeweButton(@border: transparent, @color: white, @background: transparent, @size: 1px) {
   border: @size solid @border;
+  color: @color;
   background-color: @background;
+
+  &:hover {
+    color: @background;
+    background-color: @color;
+  }
 }
