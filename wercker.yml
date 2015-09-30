@@ -1,0 +1,28 @@
+box: node:0.12
+build:
+  steps:
+    - script:
+        name: cleanup
+        code: git clean -dfx
+    - npm-install
+    - npm-test
+
+deploy:
+  steps:
+    - npm-install
+    - script:
+        name: Build assets
+        code: |
+          npm run build-production
+          npm run build-production-css
+    - analogj/git-configure@0.0.3
+    - script:
+        name: Commit Assets
+        code: |
+          git config --global user.email "shane@repllabs.com"
+          git config --global user.name "Wercker Bot"
+          git checkout -b wercker-build
+          git add public/js/refugewe.min.js public/css/main.min.css
+          git commit -am 'asset compile'
+    - heroku-deploy:
+        key-name: DEPLOY_KEY
