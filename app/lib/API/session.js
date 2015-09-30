@@ -1,4 +1,4 @@
-import request from 'superagent-bluebird-promise';
+import request from 'superagent';
 import { APIEndpoints } from '../../constants/app-constants';
 
 module.exports = {

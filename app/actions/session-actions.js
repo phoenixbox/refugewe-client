@@ -19,7 +19,7 @@ module.exports = {
   init: function() {
     let access_token = SessionStore.getAccessToken() || __access_token;
 
-    SessionAPI.login(access_token).then(function(res) {
+    SessionAPI.login(access_token).end((err, res) => {
       if (res.error) {
         var errorMsgs = _getErrors(res);
         AppDispatcher.dispatch({
@@ -46,7 +46,7 @@ module.exports = {
   },
 
   logout: function() {
-    SessionAPI.logout().then(function(res) {
+    SessionAPI.logout().end((err, res) => {
       console.log('Logged Out');
       if (res.status === 200) {
         AppDispatcher.dispatch({
