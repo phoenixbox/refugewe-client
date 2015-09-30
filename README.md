@@ -1,15 +1,16 @@
-<!-- ![mayk](/../screenshots/images/maykLogo.png?raw=true "Mayk") -->
----
-
-<!-- [![wercker
-status](https://app.wercker.com/status/.../m
-"wercker
-status")](https://app.wercker.com/project/bykey/...) -->
+![RefugeWe](/../screenshots/public/img/screenshots/refugewe_readme.png?raw=true "RefugeWe")
 
 ### RefugeWe
-Organization software for helping refugees
+Organization software for helping refugees. Advocacy platform and info form processor.
 
 ### Running the app
-Spin up the app in development.
+* Run the server
+* Run the build step watching for changes
 
-* make dev
+```bash
+$ make dev-watch
+$ make dev-server
+```
+
+### Running the tests
+* npm run 
