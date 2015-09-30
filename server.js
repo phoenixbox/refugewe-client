@@ -7,7 +7,7 @@ var url = require('url');
 
 server.connection({
   host: '0.0.0.0',
-  port: process.env.PORT || 3700,
+  port: process.env.PORT || 3500,
   routes: { cors: true }
 });
 
