@@ -1,6 +1,6 @@
-![RefugeWe](/../screenshots/public/img/screenshots/refugewe_readme.png?raw=true "RefugeWe")
+![refugewe](/../screenshots/public/img/screenshots/refugewe_readme.png?raw=true "refugewe")
 
-### RefugeWe
+### refugewe
 Organization software for helping refugees. Advocacy platform and info form processor.
 
 ### Running the app
@@ -13,4 +13,4 @@ $ make dev-server
 ```
 
 ### Running the tests
-* npm run 
+* npm run
