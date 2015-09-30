@@ -18,12 +18,13 @@ let Header = React.createClass({
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href="/account">Mayk</a>
+            <a className="navbar-brand" href="/profile"></a>
           </div>
           <div className="collapse navbar-collapse" id="mayk-navbar-collapse">
             <ul className="nav navbar-nav">
-              <li><a href="/account">Account</a></li>
-              <li><a href="/documentation">Documentation</a></li>
+              <li><a href="/account">Profile</a></li>
+              <li><a href="/documentation">Advocacy</a></li>
+              <li><a href="/documentation">Registration</a></li>
             </ul>
             <ul className="nav navbar-nav navbar-right">
               <li><a href="/logout">Logout</a></li>

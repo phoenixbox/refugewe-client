@@ -13,6 +13,6 @@ var routes = (
 
 export default function() {
   Router.run(routes, Router.HistoryLocation, (Handler) => {
-    React.render(<Handler/>, document.getElementById('refugeWe'));
+    React.render(<Handler/>, document.getElementById('refugewe'));
   });
 }

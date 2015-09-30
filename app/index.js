@@ -4,7 +4,7 @@ import {GA_KEY} from './config';
 
 // Enable React dev tools
 window.React = React;
-window.refugeWe = router();
+window.refugewe = router();
 
 /**
  * Analytics API signature
