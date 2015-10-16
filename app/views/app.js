@@ -2,22 +2,26 @@ import React from 'react/addons';
 import classnames from 'classnames';
 import _ from 'lodash';
 import SessionStore from '../stores/session-store.js';
+import SchemaStore from '../stores/schema-store.js';
 import FacebookStore from '../stores/facebook-store.js'
 import SessionActions from '../actions/session-actions.js';
+import SchemaActions from '../actions/schema-actions.js';
 import Header from './components/header.js'
 import {RouteHandler} from 'react-router';
 
 let internals = {
-  getSessionFromStore() {
+  getStateFromStore() {
     let user = SessionStore.getUser();
     if (_.isEmpty(user)) {
       console.log('Session Init');
       SessionActions.init();
+      SchemaActions.init();
     }
 
     return {
       user: user,
-      facebook: FacebookStore.getFacebook()
+      facebook: FacebookStore.getFacebook(),
+      schema: SchemaStore.getSchema()
     }
   }
 }
@@ -25,16 +29,18 @@ let internals = {
 let App = React.createClass({
 
   getInitialState() {
-    return internals.getSessionFromStore();
+    return internals.getStateFromStore();
   },
 
   componentDidMount() {
     SessionStore.addChangeListener(this._onChange);
+    SchemaStore.addChangeListener(this._onChange);
     FacebookStore.addChangeListener(this._onChange);
   },
 
   componentWillUnmount() {
     SessionStore.removeChangeListener(this._onChange);
+    SchemaStore.removeChangeListener(this._onChange);
     FacebookStore.removeChangeListener(this._onChange);
   },
 
@@ -57,7 +63,7 @@ let App = React.createClass({
 
   _onChange() {
     console.log('Session store updated')
-    this.setState(internals.getSessionFromStore());
+    this.setState(internals.getStateFromStore());
   }
 });
 
