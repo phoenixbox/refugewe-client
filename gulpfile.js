@@ -36,7 +36,6 @@ gulp.task('cssmin', function() {
 
 gulp.task('watch', function() {
   run('npm run watchify');
-  // run('npm run watchify-test');
   gulp.watch('public/less/**/*.less', ['less']);
 });
 
