@@ -11,6 +11,7 @@ let _isLoading = false;
 const FB_ATTR_MAP = {
   facebook_username: 'username',
   facebook_display_name: 'display_name',
+  facebook_photo_url: 'photo_url',
   facebook_token: 'token'
 }
 
